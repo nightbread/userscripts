@@ -1,13 +1,16 @@
 // ==UserScript==
-// @name         iPT filter
-// @namespace    http://github.com/nightbread
-// @version      0.3
-// @description  try to take over the world!
-// @author       nightbread
-// @match        https://iptorrents.eu/t*
-// @grant        none
-// @downloadURL  https://github.com/nightbread/userscripts/raw/master/ipt-filter.user.js
-// @uploadURL    https://github.com/nightbread/userscripts/raw/master/ipt-filter.user.js
+// @name iPT filter
+// @namespace http://github.com/nightbread
+// @version 0.3
+// @encoding utf-8
+// @license https://opensource.org/licenses/MIT
+// @homepage https://github.com/nightbread/userscripts
+// @description Do not use.
+// @author nightbread
+// @include https://iptorrents.eu/t*
+// @updateURL https://raw.githubusercontent.com/nightbread/userscripts/master/ipt-filter.user.js
+// @downloadURL https://raw.githubusercontent.com/nightbread/userscripts/master/ipt-filter.user.js
+// @supportURL https://github.com/nightbread/userscripts/issues
 // ==/UserScript==
 
 (function() {
