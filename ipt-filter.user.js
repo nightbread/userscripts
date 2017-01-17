@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         iPT filter
 // @namespace    http://github.com/nightbread
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
-// @author       You
+// @author       nightbread
 // @match        https://iptorrents.eu/t*
 // @grant        none
 // @downloadURL  https://github.com/nightbread/userscripts/raw/master/ipt-filter.user.js
