@@ -6,8 +6,8 @@
 // @author       You
 // @match        https://iptorrents.eu/t*
 // @grant        none
-// @downloadURL  https://gist.github.com/anonymous/8ecc42759c5a3a3e34c6af260ae9bd8e/raw/e6534ceea1276b235c2d9bae1b23d652a1499e8e/ipt-xvid-remove.user.js
-// @uploadURL    https://gist.github.com/anonymous/8ecc42759c5a3a3e34c6af260ae9bd8e/raw/e6534ceea1276b235c2d9bae1b23d652a1499e8e/ipt-xvid-remove.user.js
+// @downloadURL  https://github.com/nightbread/userscripts/raw/master/ipt-filter.user.js
+// @uploadURL    https://github.com/nightbread/userscripts/raw/master/ipt-filter.user.js
 // ==/UserScript==
 
 (function() {
