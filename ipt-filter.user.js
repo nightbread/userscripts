@@ -18,6 +18,8 @@
 
     const xvidIPTTeam = /XviD-iPT Team/;
     const removeRegexes = [
+        /^Exotic4K/,
+        /^TheTrainingofO/i,
         /^EvilAngel/,
         /^StraplessDildo/,
         /^MilfThing/i,
