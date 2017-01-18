@@ -18,6 +18,10 @@
 
     const xvidIPTTeam = /XviD-iPT Team/;
     const removeRegexes = [
+        /^EvilAngel/,
+        /^StraplessDildo/,
+        /^MilfThing/i,
+        /^OnlyBlowJob/,
         /^PetiteHDPorn/,
         /^DirtyWivesClubs/,
         /^MonstersOfCock/,
@@ -135,7 +139,7 @@
         /^FemaleAgent/,
         /^JoshStoneXXX/,
         /^Girlfriends\s(?:[0-9]{2}\s){3}/,
-        /^(?:Mean|Fantasy)Massage/,
+        /^(?:Mean|Fantasy|Nuru)Massage/,
         /^(?:WoodmanCasting|Brutal)X/,
         /^XXX(?: Pawn|Shades)/,
         /^ColombiaFuckFest/,
