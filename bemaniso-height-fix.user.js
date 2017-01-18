@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name bemaniso BlueBit Fixer
 // @namespace https://github.com/nightbread/userscripts
-// @version 0.2
+// @version 0.0.1
 // @description Do not use.
 // @author nightbread
 // @include https://bemaniso.ws/*
