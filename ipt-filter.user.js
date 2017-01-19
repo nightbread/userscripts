@@ -141,7 +141,7 @@
         'ALSAngels',
         'FemaleAgent',
         'JoshStoneXXX',
-        'Girlfriends\\s(?:[0-9]{2}\\s){3}',
+        '(POV|Girlfriends)\\s(?:[0-9]{2}\\s){3}',
         '(?:Mean|Fantasy|Nuru|MyNaughty)Massage',
         '(?:WoodmanCasting|Brutal)X',
         'XXX(?: Pawn|Shades)',
