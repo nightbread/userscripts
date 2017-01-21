@@ -18,6 +18,7 @@
 
     const xvidIPTTeam = /XviD-iPT Team/;
     const prefixes = new RegExp('^(' + [
+        'ShesBrandNew',
         'Wild Party Girls',
         'JamesDeen',
         'SexArt',
