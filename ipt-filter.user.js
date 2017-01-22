@@ -18,6 +18,8 @@
 
     const xvidIPTTeam = /XviD-iPT Team/;
     const prefixes = new RegExp('^(' + [
+        'Ebony',
+        'AbbyWinters',
         'ShesBrandNew',
         'Wild Party Girls',
         'JamesDeen',
@@ -60,7 +62,7 @@
         'BangBrosClips',
         'SinsLife',
         'DeepThroatSirens',
-        'Big(?:GulpGirls|Naturals)',
+        'Big(?:GulpGirls|Naturals|WetButts)',
         'JulesJordan',
         'MySistersHotFriend',
         'MetArtX?',
