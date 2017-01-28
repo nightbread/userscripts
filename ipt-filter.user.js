@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.14
+// @version 0.0.15
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -76,7 +76,7 @@
         'ImmoralLive',
         'DoctorAdventures',
         'Pornstar(Platinum|sLikeItBig)',
-        'TeensLikeItBig',
+        'TeensL(?:ikeItBig|oveBlackCock)',
         'InnocentHigh',
         'X-Angels',
         'ReadyOrNot',
@@ -170,6 +170,12 @@
         'TeachMeFisting',
         'BurningAngel',
         'ButtPlays',
+        'EverythingButt',
+        'BackstageBeginners',
+        'PortaGloryhole',
+        'AsianaStarr',
+        'VelvetEcstacy',
+        'BlackPatrol',
         'AssholeFever',
         'LetsTryAnal',
         'Killergram',
