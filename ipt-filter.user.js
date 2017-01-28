@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.13
+// @version 0.0.14
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -18,6 +18,7 @@
 
     const xvidIPTTeam = /XviD-iPT Team/;
     const prefixes = new RegExp('^(' + [
+        'Piss',
         'Ebony',
         'AbbyWinters',
         'ShesBrandNew',
@@ -95,11 +96,11 @@
         'Porn(?:Fidelity|MegaLoad)',
         '(?:Lub|Hol)ed',
         'LANewGirl',
-        'PunishTeens',
+        '(?:Stranded|Punish)Teens',
         'TeenPies',
         'Public(?:Disgrace|PickUps|Agent)',
         'Vixen',
-        'Anal-Beauty',
+        'Anal(?:-Beauty|TeenAngels)',
         '(?:Female)?Fake(?:Cop|Agent|Taxi|Hospital)',
         'TheFuckingRoom',
         'FamilyStrokes',
