@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.15
+// @version 0.0.16
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -33,7 +33,7 @@
         'MilfThing',
         'Only(?:Teen)?BlowJobs?',
         'PetiteHDPorn',
-        'DirtyWivesClubs',
+        'DirtyWivesClub',
         'MonstersOfCock',
         'MoneyTalks',
         'FTV',
@@ -65,7 +65,7 @@
         'DeepThroatSirens',
         'Big(?:GulpGirls|Naturals|WetButts)',
         'JulesJordan',
-        'MySistersHotFriend',
+        'My(?:SistersHot|GirlfriendsBusty)Friend',
         'MetArtX?',
         'MeloneChallenge',
         'Hegre',
@@ -249,14 +249,18 @@
         'Zoliboy',
         'PrettyDirty',
         '(?:Erotica|Dark)X',
-        '21FootArt',
+        '(?:21Foot|Rylsky)Art',
         'PervsOnPatrol',
         'HogTied',
-        'BrutalCastings'
+        'BrutalCastings',
+        'MatureNL',
+        'Yonitale',
+        'OrgasmWorldChampionship'
     ].join('|') + ')', 'i');
     const removeRegexes = [
         /(?:SPANISH|ITALIAN|FRENCH|DUTCH) XXX/i,
         /WifeSwap/i,
+        /FTV\s/,
         prefixes,
     ];
     const lesbo = /\blesb(?:ian|o)\b/i;
