@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.16
+// @version 0.0.17
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -49,7 +49,9 @@
         'Karups[A-Z]',
         'DigitalPlayground',
         'AuntJudys',
-        'MontysPOV',
+        '(?:Tease|Montys)POV',
+        'BitchConfessions',
+        'BangBros18',
         'Naked News',
         'WowGirls',
         'AllFineGirls',
@@ -80,7 +82,12 @@
         'InnocentHigh',
         'X-Angels',
         'ReadyOrNot',
-        'MomXXX',
+        'Mom(?:XXX|sInControl|myGotBoobs)',
+        'Slimewave',
+        'AllWam',
+        'Leather',
+        'Ginger',
+        'Bra[zs]il',
         'Colette',
         'Throated',
         'HardX',
@@ -210,7 +217,7 @@
         'OldYoung',
         'Fucking(Glasses|Machines)',
         'FirstAnalDate',
-        'ExploitedCollegeGirls',
+        '(?:ExploitedCollege|BlowBang)Girls',
         'UltimateSurrender',
         'KellyMadison',
         'Shoplyfter',
