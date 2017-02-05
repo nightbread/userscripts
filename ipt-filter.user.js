@@ -19,6 +19,7 @@
     const xvidIPTTeam = /XviD-iPT Team/;
     const prefixes = new RegExp('^(' + [
         'GirlsDo[A-Z]',
+        'MissLingLing',
         'TokyoHot',
         'HelplessTeens',
         'Piss',
