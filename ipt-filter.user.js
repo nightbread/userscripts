@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.19
+// @version 0.0.20
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -30,6 +30,7 @@
         'JamesDeen',
         'SexArt',
         'BangBus',
+        'Watch4Beauty',
         '(Exotic|Tiny|Beauty)4K',
         'TheTrainingofO',
         'EvilAngel',
@@ -111,7 +112,7 @@
         'TeenPies',
         'Public(?:Disgrace|PickUps|Agent)',
         'Vixen',
-        'Anal(?:-Beauty|TeenAngels)',
+        '(?:First)?Anal(?:-Beauty|TeenAngels|Quest)',
         '(?:Female)?Fake(?:Cop|Agent|Taxi|Hospital)',
         'TheFuckingRoom',
         'FamilyStrokes',
