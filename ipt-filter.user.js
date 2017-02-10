@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.20
+// @version 0.0.21
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -112,6 +112,7 @@
         'TeenPies',
         'Public(?:Disgrace|PickUps|Agent)',
         'Vixen',
+        'AnalOverdose',
         '(?:First)?Anal(?:-Beauty|TeenAngels|Quest)',
         '(?:Female)?Fake(?:Cop|Agent|Taxi|Hospital)',
         'TheFuckingRoom',
@@ -168,6 +169,10 @@
         'Tushy',
         '(?:Mean|Fantasy|Nuru|MyNaughty)Massage',
         '(?:WoodmanCasting|Brutal)X',
+        'MassageCreep',
+        'SimplyAnal',
+        'FisterTwister',
+        'HardcoreGangbang',
         'XXX(?: Pawn|Shades)',
         'MomKnowsBest',
         'AlexLegend',
@@ -221,6 +226,7 @@
         'LANewGirl',
         'OldYoung',
         'Fucking(Glasses|Machines)',
+        'Teen(?:Aanalyzed|Fidelity)',
         'FirstAnalDate',
         '(?:ExploitedCollege|BlowBang)Girls',
         'UltimateSurrender',
