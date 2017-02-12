@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.21
+// @version 0.0.22
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -18,6 +18,16 @@
 
     const xvidIPTTeam = /XviD-iPT Team/;
     const prefixes = new RegExp('^(' + [
+        'Gyno-X',
+        'ZebraGirls',
+        'MyBabysittersClub',
+        'InterracialPickups',
+        'Real(?:GFS|Black)Exposed',
+        'VelvetEcstacy',
+        'FeatureFilms',
+        'CougarSeason',
+        'BrutalDildos',
+        'BrickYates',
         'GirlsDo[A-Z]',
         'MissLingLing',
         'TokyoHot',
