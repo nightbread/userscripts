@@ -20,6 +20,8 @@
     const prefixes = new RegExp('^(' + [
         'Czech',
         'PureMature',
+        'WankItNow',
+        'WakeUp'
         'Gyno-X',
         'ZebraGirls',
         'MyBabysittersClub',
