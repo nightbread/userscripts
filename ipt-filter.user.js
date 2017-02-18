@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.26
+// @version 0.0.27
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -44,10 +44,12 @@
     const xxxRegexp = /[^X]XXX.(?:[0-9]|HR)/;
 
     Array.from(document.querySelectorAll(SELECTOR)).forEach(function(el, i) {
-        const row = el.parentElement.parentElement;
+        const rowPromise = new Promise(function (res, rej) {
+            res(el.parentElement.parentElement);
+        });
 
         if (xvidIPTTeam.test(el.innerText)) {
-            row.remove();
+            rowPromise.then(function (row) { row.remove(); });
             return;
         }
 
@@ -57,6 +59,8 @@
             return;
         }
 
-        row.remove();
+        rowPromise.then(function (row) {
+            row.remove();
+        });
     });
 })();
