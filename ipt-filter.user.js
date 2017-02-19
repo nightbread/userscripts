@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name iPT filter
 // @namespace http://github.com/nightbread
-// @version 0.0.27
+// @version 0.0.28
 // @encoding utf-8
 // @license https://opensource.org/licenses/MIT
 // @homepage https://github.com/nightbread/userscripts
@@ -41,7 +41,7 @@
     ].join('|') + ')\.[0-9]{2}', 'i');
     const lesbo = /\blesb(?:ian|o)\b/i;
     const SELECTOR = '#torrents > tbody > tr > td > a.b';
-    const xxxRegexp = /[^X]XXX.(?:[0-9]|HR)/;
+    const xxxRegexp = /[^X]XXX.(?:[0-9]|HR|MP4|WMV|XviD)/;
 
     Array.from(document.querySelectorAll(SELECTOR)).forEach(function(el, i) {
         const rowPromise = new Promise(function (res, rej) {
