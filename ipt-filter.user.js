@@ -41,7 +41,7 @@
     ].join('|') + ')\.[0-9]{2}', 'i');
     const lesbo = /\blesb(?:ian|o)\b/i;
     const SELECTOR = '#torrents > tbody > tr > td > a.b';
-    const xxxRegexp = /[^X]XXX.(?:[0-9]|HR|MP4|WMV|XviD)/;
+    const xxxRegexp = /[^X]XXX.(?:INTERNAL.)?(?:[0-9]|HR|MP4|WMV|XviD)/;
 
     Array.from(document.querySelectorAll(SELECTOR)).forEach(function(el, i) {
         const rowPromise = new Promise(function (res, rej) {
