@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export GIT_SSH="$HOME/usr/bin/nb-git-ssh"
+export GIT_SSH="$HOME/.local/bin/nb-git-ssh"
 git config user.email nightbread@inbox.lv
 git config user.name nightbread
 git config sendemail.smtpuser ''
