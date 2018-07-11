@@ -4,7 +4,7 @@ git config user.email nightbread@inbox.lv
 git config user.name nightbread
 git config sendemail.smtpuser ''
 git config sendemail.from ''
-git config user.signingkey 5B17BCA7
+git config commit.gpgsign false
 if command -v diskutil >/dev/null 2>&1; then
     if diskutil info / | fgrep -i case-sensitive; then
         git config core.ignorecase false
