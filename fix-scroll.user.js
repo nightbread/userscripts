@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Ignore all custom window "wheel" events.
 // @author       You
-// @match        https://dailystormer.name/
+// @match        https?://dailystormer.name/
 // @grant        none
 // ==/UserScript==
 
