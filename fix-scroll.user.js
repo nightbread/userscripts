@@ -3,8 +3,9 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.2.0
 // @description  Ignore all custom window "wheel" events.
-// @author       You
-// @match        https?://dailystormer.name/
+// @author       Yu
+// @include      http://*
+// @include      https://*
 // @grant        none
 // ==/UserScript==
 
