@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix scroll
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.3.0
 // @description  Ignore all custom window "wheel" events.
 // @author       Yu
 // @include      http://*
