@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Uneventful
 // @namespace    https://microsoft.com/
-// @version      1.1
+// @version      1.2
 // @description  Prevent annoying events from being bound.
 // @author       Audreyshake of Reddit
 // @match        *://*/*
@@ -111,7 +111,7 @@ function doesCanEvent(domain, event) {
             console.groupCollapsed(
                 '%cEvent refused: %c%s', 'color:red', 'color:default', type);
         }
-        console.log('Element: %O', this);
+        // console.log('Element: %O', this);
         // console.log('Listener: %o', listener);
         // console.log('Listener source: %s', listener.toString()); // For dealing with really bizarre things?
         // console.trace();
