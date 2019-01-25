@@ -61,8 +61,11 @@ const domainPermissions = {
     },
     DEFAULT: {
         allow: '*'
-    },
+    }
 };
+
+// Sites that do not like overriding addEventListener to be read-only
+const aelBlacklist = ['.icloud.com'];
 
 /**
  * @param string domain
@@ -124,6 +127,9 @@ function doesCanEvent(domain, event) {
      *
      * See <http://stackoverflow.com/a/7757493>.
      */
-    Object.defineProperty(element, 'addEventListener', {
-        value: element.addEventListener, writable: false });
+    const domain = window.location.host.replace(/..*?\./, '.');
+    if (!aelBlacklist.includes(domain)) {
+        Object.defineProperty(element, 'addEventListener', {
+            value: element.addEventListener, writable: false });
+    }
 });
