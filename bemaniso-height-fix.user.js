@@ -10,8 +10,7 @@
 // @downloadURL https://raw.githubusercontent.com/nightbread/userscripts/master/bemaniso-height-fix.user.js
 // ==/UserScript==
 
-(function () {
-    const content = document.querySelector('#content');
-    content.style.marginTop = '41px';
-    content.style.border = '0';
-})();
+/** @type {HTMLDivElement} */
+const content = document.querySelector('#content');
+content.style.marginTop = '41px';
+content.style.border = '0';
