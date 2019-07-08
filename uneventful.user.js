@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Uneventful
 // @namespace    https://microsoft.com/
-// @version      1.3.2
+// @version      1.3.3
 // @description  Prevent annoying events from being bound.
 // @author       Audreyshake of Reddit
 // @match        *://*/*
@@ -116,10 +116,14 @@ function doesCanEvent(domain, event) {
 
   element.addEventListener = (type) => {
     if (doesCanEvent(window.location.host, type)) {
-      trueBlueAddEventListener.apply(
-        // @ts-ignore
-        // eslint-disable-next-line no-undef
-        this, Array.prototype.slice.apply(arguments));
+      try {
+        trueBlueAddEventListener.apply(
+          // @ts-ignore
+          // eslint-disable-next-line no-undef
+          this, Array.prototype.slice.apply(arguments));
+        // eslint-disable-next-line no-empty
+      } catch (exc) {
+      }
     }
   };
 
