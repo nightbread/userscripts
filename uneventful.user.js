@@ -114,9 +114,12 @@ function doesCanEvent(domain, event) {
 [HTMLElement.prototype, document, window].forEach((element) => {
   const trueBlueAddEventListener = element.addEventListener;
 
-  element.addEventListener = (type, listener, options) => {
+  element.addEventListener = (type) => {
     if (doesCanEvent(window.location.host, type)) {
-      trueBlueAddEventListener.call(this, type, listener, options);
+      trueBlueAddEventListener.apply(
+        // @ts-ignore
+        // eslint-disable-next-line no-undef
+        this, Array.prototype.slice.apply(arguments));
     }
   };
 
