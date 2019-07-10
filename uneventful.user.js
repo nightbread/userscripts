@@ -15,38 +15,40 @@
 
 /** Movement events. */
 const movementEvents = [
-  'keydown',
-  'keypress',
-  'keyup',
-  'wheel',
-  'mousewheel', // Deprecated but apparently still accepted by Chrome
-  'scroll'
+  "keydown",
+  "keypress",
+  "keyup",
+  "wheel",
+  "mousewheel", // Deprecated but apparently still accepted by Chrome
+  "scroll"
 ];
 
 /**
- * Search domain, superdomains, default.
+ * Search domain, super-domains, default.
  * Order: deny, allow.
  * Default: allow.
  *
  * Use '.my.domain' to match 'my.domain', 'mail.my.domain', etc., and
  * 'my.domain' to match only 'my.domain'.
+ *
+ * @type {Object<string, {allow?: string[]|string, deny?: string[] | string}>}
  */
 const domainPermissions = {
-  '.dailystormer.name': {
+  ".dailystormer.name": {
     deny: movementEvents
   },
-  '.unicornriot.ninja': {
+  ".unicornriot.ninja": {
     deny: movementEvents
   },
   DEFAULT: {
-    allow: '*'
+    allow: "*"
   }
 };
 
 /**
  * Sites that do not like overriding addEventListener to be read-only.
  */
-const aelBlacklist = ['.icloud.com'];
+const aelBlacklist = [".icloud.com"];
 
 /**
  * @param {Object<string, any>} obj Object.
@@ -63,26 +65,26 @@ const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
  */
 const doesCanEvent = (domain, event) => {
   let last = domain;
-  let next = last.replace(/..*?\./, '.');
-  let superdomains = [domain, '.' + domain];
+  let next = last.replace(/..*?\./, ".");
+  let superDomains = [domain, "." + domain];
   for (; next != last; last = next) {
-    superdomains.push(next);
-    next = last.replace(/..*?\./, '.');
+    superDomains.push(next);
+    next = last.replace(/..*?\./, ".");
   }
-  superdomains.push('DEFAULT');
+  superDomains.push("DEFAULT");
 
-  for (domain of superdomains) {
+  for (domain of superDomains) {
     if (hasOwn(domainPermissions, domain)) {
       const dp = domainPermissions[domain];
       if (
-        hasOwn(dp, 'deny') &&
-        (dp.deny.indexOf(event) != -1 || dp.deny.indexOf('*') != -1)
+        hasOwn(dp, "deny") &&
+        (dp.deny.indexOf(event) != -1 || dp.deny.indexOf("*") != -1)
       ) {
         return false;
       }
       if (
-        hasOwn(dp, 'allow') &&
-        (dp.allow.indexOf(event) != -1 || dp.allow.indexOf('*') != -1)
+        hasOwn(dp, "allow") &&
+        (dp.allow.indexOf(event) != -1 || dp.allow.indexOf("*") != -1)
       ) {
         return true;
       }
@@ -99,7 +101,6 @@ const doesCanEvent = (domain, event) => {
     if (doesCanEvent(window.location.host, args[0])) {
       try {
         trueBlueAddEventListener.apply(this, args);
-        // eslint-disable-next-line no-empty
       } catch (exc) {
         window.console.error(exc);
       }
@@ -109,9 +110,9 @@ const doesCanEvent = (domain, event) => {
   // captured the real addEventListener, it isn't really necessary, but I'm
   // not a fan of sites doing it.
   // See <http://stackoverflow.com/a/7757493>.
-  const domain = window.location.host.replace(/..*?\./, '.');
+  const domain = window.location.host.replace(/..*?\./, ".");
   if (!aelBlacklist.includes(domain)) {
-    Object.defineProperty(element, 'addEventListener', {
+    Object.defineProperty(element, "addEventListener", {
       value: element.addEventListener,
       writable: false
     });
