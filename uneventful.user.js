@@ -13,31 +13,7 @@
 
 // Inspired by <http://stackoverflow.com/a/10326899>.
 
-// const pasteEvents = [
-//   'select',
-//   'selectstart',
-//   'selectionchange',
-//   'beforecopy',
-//   'beforecut',
-//   'beforepaste',
-//   'copy',
-//   'cut',
-//   'paste',
-//   'contextmenu'
-// ];
-// const activityEvents = [
-//   'visibilitychange'
-// ];
-// const mundaneEvents = [
-//   'click',
-//   'mousedown',
-//   'load',
-//   'unload',
-//   'DOMContentLoaded',
-//   'getData',
-//   'setData'
-// ];
-
+/** Movement events. */
 const movementEvents = [
   'keydown',
   'keypress',
@@ -47,7 +23,7 @@ const movementEvents = [
   'scroll'
 ];
 
-/*
+/**
  * Search domain, superdomains, default.
  * Order: deny, allow.
  * Default: allow.
@@ -67,54 +43,59 @@ const domainPermissions = {
   }
 };
 
-// Sites that do not like overriding addEventListener to be read-only
+/**
+ * Sites that do not like overriding addEventListener to be read-only.
+ */
 const aelBlacklist = ['.icloud.com'];
 
 /**
- * @param {string} domain
- * @param {string} event
- * @return {boolean}
+ * @param {Object<string, any>} obj Object.
+ * @param {string} key Key to lookup.
+ * @returns {boolean} Returns `true` key is present in the object.
  */
-function doesCanEvent(domain, event) {
+const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+
+/**
+ * Checks if an event should be triggered for a domain.
+ * @param {string} domain Domain string.
+ * @param {string} event Event name.
+ * @returns {boolean} Returns `true` if the event is allowed.
+ */
+const doesCanEvent = (domain, event) => {
   let last = domain;
   let next = last.replace(/..*?\./, '.');
   let superdomains = [domain, '.' + domain];
-
   for (; next != last; last = next) {
     superdomains.push(next);
     next = last.replace(/..*?\./, '.');
   }
-
   superdomains.push('DEFAULT');
 
-  /**
-   * @param {Object<string, any>} obj
-   * @param {string} key
-   * @return {boolean}
-   */
-  const hop = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
-
   for (domain of superdomains) {
-    if (hop(domainPermissions, domain)) {
+    if (hasOwn(domainPermissions, domain)) {
       const dp = domainPermissions[domain];
-      if (hop(dp, 'deny') &&
-        (dp.deny.indexOf(event) != -1 || dp.deny.indexOf('*') != -1)) {
+      if (
+        hasOwn(dp, 'deny') &&
+        (dp.deny.indexOf(event) != -1 || dp.deny.indexOf('*') != -1)
+      ) {
         return false;
       }
-      if (hop(dp, 'allow') &&
-        (dp.allow.indexOf(event) != -1 || dp.allow.indexOf('*') != -1)) {
+      if (
+        hasOwn(dp, 'allow') &&
+        (dp.allow.indexOf(event) != -1 || dp.allow.indexOf('*') != -1)
+      ) {
         return true;
       }
     }
   }
 
   return false;
-}
+};
 
-[HTMLElement.prototype, document, window].forEach((element) => {
+// Entry point
+[HTMLElement.prototype, document, window].forEach(element => {
   const trueBlueAddEventListener = element.addEventListener;
-
-  element.addEventListener = function (...args) {
+  element.addEventListener = function(...args) {
     if (doesCanEvent(window.location.host, args[0])) {
       try {
         trueBlueAddEventListener.apply(this, args);
@@ -124,18 +105,15 @@ function doesCanEvent(domain, event) {
       }
     }
   };
-
-  /*
-   * Keep scripts from redefining addEventListener. Since we've already
-   * captured the real addEventListener, it isn't really necessary, but I'm
-   * not a fan of sites doing it.
-   *
-   * See <http://stackoverflow.com/a/7757493>.
-   */
+  // Keep scripts from redefining addEventListener. Since we've already
+  // captured the real addEventListener, it isn't really necessary, but I'm
+  // not a fan of sites doing it.
+  // See <http://stackoverflow.com/a/7757493>.
   const domain = window.location.host.replace(/..*?\./, '.');
   if (!aelBlacklist.includes(domain)) {
     Object.defineProperty(element, 'addEventListener', {
-      value: element.addEventListener, writable: false
+      value: element.addEventListener,
+      writable: false
     });
   }
 });
