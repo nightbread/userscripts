@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Uneventful
 // @namespace    https://microsoft.com/
-// @version      1.3.5
+// @version      1.3.6
 // @description  Prevent annoying events from being bound.
 // @author       Audreyshake of Reddit
 // @match        *://*/*
