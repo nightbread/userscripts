@@ -6,8 +6,10 @@
 // @description  Prevent annoying events from being bound.
 // @author       Audreyshake of Reddit
 // @match        *://*/*
+// @exclude *://*.google.com/*
 // @exclude *://*.ignitioncasino.com/*
 // @exclude *://*.marcos.com/*
+// @exclude *://*.youtube.com/*
 // @exclude *://account.arin.net/*
 // @exclude *://account.ring.com/*
 // @exclude *://app.slack.com/*
@@ -16,8 +18,6 @@
 // @exclude *://gitlab.com/*
 // @exclude *://internet.speedpay.com/*
 // @exclude *://login.inbox.lv/*
-// @exclude *://meet.google.com/*
-// @exclude *://music.youtube.com/*
 // @exclude *://my.account.sony.com/*
 // @exclude *://my.adp.com/*
 // @exclude *://portfolio.geico.com/*
@@ -26,10 +26,8 @@
 // @exclude *://www.duke-energy.com/*
 // @exclude *://www.fedex.com/*
 // @exclude *://www.gamespot.com/*
-// @exclude *://www.google.com/*
 // @exclude *://www.seminolewildcard.com/*
 // @exclude *://www.universalorlando.com/*
-// @exclude *://www.youtube.com/*
 // @grant        none
 // @run-at       document-start
 // @updateURL https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
@@ -125,7 +123,7 @@ const doesCanEvent = (domain, event) => {
 // Entry point
 [HTMLElement.prototype, document, window].forEach(element => {
   const ael = element.addEventListener;
-  element.addEventListener = (...args) => {
+  element.addEventListener = function (...args) {
     if (!doesCanEvent(window.location.host, args[0])) {
       console.log(
         `uneventful: Not binding "${args[0]}" event ` +
@@ -134,7 +132,7 @@ const doesCanEvent = (domain, event) => {
       return;
     }
     try {
-      ael.bind(element)(...args);
+      ael.apply(this, args);
     } catch (e) {
       return console.debug(
         `uneventful: Did not bind original "${args[0]}" event`,
