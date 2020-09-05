@@ -1,4 +1,3 @@
-'use strict';
 // ==UserScript==
 // @name         Uneventful
 // @namespace    https://microsoft.com/
@@ -40,7 +39,7 @@ const movementEvents = [
   'keypress',
   'keyup',
   'wheel',
-  'mousewheel',
+  'mousewheel', // Deprecated but apparently still accepted by Chrome
   'scroll',
 ];
 /**
@@ -51,7 +50,12 @@ const movementEvents = [
  * Use '.my.domain' to match 'my.domain', 'mail.my.domain', etc., and
  * 'my.domain' to match only 'my.domain'.
  */
-const domainPermissions = {
+const domainPermissions: {
+  [domain: string]: {
+    allow?: '*' | string[];
+    deny?: '*' | string[];
+  };
+} = {
   '.dailystormer.su': {
     deny: movementEvents,
   },
@@ -65,11 +69,14 @@ const domainPermissions = {
 /** Sites that do not like overriding addEventListener to be read-only. */
 const aelBlacklist = ['.icloud.com'];
 /** Generate superdomains of a domain. */
-const superDomains = function* (domain) {
-  yield domain;
-  yield '.' + domain;
+const superDomains = function* (
+  domain: keyof typeof domainPermissions,
+): Generator<keyof typeof domainPermissions | string | 'DEFAULT'> {
+  yield domain as string;
+  yield '.' + (domain as string);
   for (
-    let last = domain, next = domain.replace(/..*?\./, '.');
+    let last = domain as string,
+      next = (domain as string).replace(/..*?\./, '.');
     next != last;
     next = last.replace(/..*?\./, '.'), last = next
   ) {
@@ -83,37 +90,19 @@ const superDomains = function* (domain) {
  * @param event Event name.
  * @returns Returns `true` if the event is allowed.
  */
-const doesCanEvent = (domain, event) => {
-  var _a, _b, _c, _d, _e, _f, _g, _h;
+const doesCanEvent = (
+  domain: keyof typeof domainPermissions,
+  event: string,
+) => {
   for (const domain_ of superDomains(domain)) {
     if (
-      ((_b =
-        (_a = domainPermissions[domain_]) === null || _a === void 0
-          ? void 0
-          : _a.deny) === null || _b === void 0
-        ? void 0
-        : _b.includes(event)) ||
-      ((_d =
-        (_c = domainPermissions[domain_]) === null || _c === void 0
-          ? void 0
-          : _c.deny) === null || _d === void 0
-        ? void 0
-        : _d.includes('*'))
+      domainPermissions[domain_]?.deny?.includes(event) ||
+      domainPermissions[domain_]?.deny?.includes('*')
     ) {
       return false;
     } else if (
-      ((_f =
-        (_e = domainPermissions[domain_]) === null || _e === void 0
-          ? void 0
-          : _e.allow) === null || _f === void 0
-        ? void 0
-        : _f.includes(event)) ||
-      ((_h =
-        (_g = domainPermissions[domain_]) === null || _g === void 0
-          ? void 0
-          : _g.allow) === null || _h === void 0
-        ? void 0
-        : _h.includes('*'))
+      domainPermissions[domain_]?.allow?.includes(event) ||
+      domainPermissions[domain_]?.allow?.includes('*')
     ) {
       return true;
     }
@@ -123,7 +112,13 @@ const doesCanEvent = (domain, event) => {
 // Entry point
 [HTMLElement.prototype, document, window].forEach(element => {
   const ael = element.addEventListener;
-  element.addEventListener = (...args) => {
+  element.addEventListener = (
+    ...args: [
+      string,
+      EventListenerOrEventListenerObject,
+      (boolean | AddEventListenerOptions)?,
+    ]
+  ) => {
     if (!doesCanEvent(window.location.host, name)) {
       return;
     }
