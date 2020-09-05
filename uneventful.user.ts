@@ -15,7 +15,7 @@
 // @exclude *://gitlab.com/*
 // @exclude *://internet.speedpay.com/*
 // @exclude *://login.inbox.lv/*
-// @exclude *://meet.google.com/*
+// @exclude *://*.google.com/*
 // @exclude *://music.youtube.com/*
 // @exclude *://my.account.sony.com/*
 // @exclude *://my.adp.com/*
@@ -25,7 +25,6 @@
 // @exclude *://www.duke-energy.com/*
 // @exclude *://www.fedex.com/*
 // @exclude *://www.gamespot.com/*
-// @exclude *://www.google.com/*
 // @exclude *://www.seminolewildcard.com/*
 // @exclude *://www.universalorlando.com/*
 // @exclude *://www.youtube.com/*
