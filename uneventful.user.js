@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         Uneventful
 // @namespace    https://microsoft.com/
-// @version      1.3.4
+// @version      1.3.6
 // @description  Prevent annoying events from being bound.
 // @author       Audreyshake of Reddit
 // @match        *://*/*
@@ -128,7 +128,7 @@ const doesCanEvent = (domain, event) => {
   element.addEventListener = (...args) => {
     if (!doesCanEvent(window.location.host, args[0])) {
       console.log(
-        `'uneventful: Not binding "${args[0]}" event ` +
+        `uneventful: Not binding "${args[0]}" event ` +
           `(host: ${window.location.host})`,
       );
       return;
