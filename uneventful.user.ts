@@ -129,7 +129,7 @@ const doesCanEvent = (
       return;
     }
     try {
-      ael.bind(element)(...args);
+      ael.apply(element, args);
     } catch (e) {
       return console.debug(
         `uneventful: Did not bind original "${args[0]}" event`,
