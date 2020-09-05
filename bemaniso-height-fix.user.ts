@@ -1,4 +1,3 @@
-'use strict';
 // ==UserScript==
 // @name bemaniso BlueBit Fixer
 // @namespace https://github.com/nightbread/userscripts
@@ -11,7 +10,7 @@
 // @downloadURL https://raw.githubusercontent.com/nightbread/userscripts/master/bemaniso-height-fix.user.js
 // ==/UserScript==
 let content;
-if ((content = window.document.querySelector('#content'))) {
+if ((content = window.document.querySelector<HTMLDivElement>('#content'))) {
   content.style.marginTop = '41px';
   content.style.border = '0';
 }
