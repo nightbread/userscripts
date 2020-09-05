@@ -123,7 +123,7 @@ const doesCanEvent = (
   ) => {
     if (!doesCanEvent(window.location.host, args[0])) {
       console.log(
-        `'uneventful: Not binding "${args[0]}" event ` +
+        `uneventful: Not binding "${args[0]}" event ` +
           `(host: ${window.location.host})`,
       );
       return;
