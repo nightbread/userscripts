@@ -28,7 +28,6 @@
 // @exclude *://www.seminolewildcard.com/*
 // @exclude *://www.universalorlando.com/*
 // @exclude *://www.youtube.com/*
-// @exclude *://www.bitchute.com/*
 // @grant        none
 // @run-at       document-start
 // @updateURL https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
@@ -114,13 +113,13 @@ const doesCanEvent = (
 // Entry point
 [HTMLElement.prototype, document, window].forEach(element => {
   const ael = element.addEventListener;
-  element.addEventListener = (
+  element.addEventListener = function (
     ...args: [
       string,
       EventListenerOrEventListenerObject,
       (boolean | AddEventListenerOptions)?,
     ]
-  ) => {
+  ) {
     if (!doesCanEvent(window.location.host, args[0])) {
       console.log(
         `uneventful: Not binding "${args[0]}" event ` +
@@ -129,7 +128,7 @@ const doesCanEvent = (
       return;
     }
     try {
-      ael.apply(element, args);
+      ael.apply(this, args);
     } catch (e) {
       return console.debug(
         `uneventful: Did not bind original "${args[0]}" event`,
