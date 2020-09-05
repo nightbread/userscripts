@@ -29,6 +29,7 @@
 // @exclude *://www.seminolewildcard.com/*
 // @exclude *://www.universalorlando.com/*
 // @exclude *://www.youtube.com/*
+// @exclude *://www.bitchute.com/*
 // @grant        none
 // @run-at       document-start
 // @updateURL https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
