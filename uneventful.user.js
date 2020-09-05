@@ -126,7 +126,11 @@ const doesCanEvent = (domain, event) => {
 [HTMLElement.prototype, document, window].forEach(element => {
   const ael = element.addEventListener;
   element.addEventListener = (...args) => {
-    if (!doesCanEvent(window.location.host, name)) {
+    if (!doesCanEvent(window.location.host, args[0])) {
+      console.log(
+        `'uneventful: Not binding "${args[0]}" event ` +
+          `(host: ${window.location.host})`,
+      );
       return;
     }
     try {
