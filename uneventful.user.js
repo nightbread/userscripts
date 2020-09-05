@@ -12,6 +12,8 @@
 // @exclude *://account.ring.com/*
 // @exclude *://app.slack.com/*
 // @exclude *://gab.com/*
+// @exclude *://github.com/*
+// @exclude *://gitlab.com/*
 // @exclude *://internet.speedpay.com/*
 // @exclude *://login.inbox.lv/*
 // @exclude *://meet.google.com/*
