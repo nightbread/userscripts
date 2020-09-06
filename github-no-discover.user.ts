@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         No Discover
-// @version      0.0.6
+// @version      0.0.7
 // @description  Hide the Discover section in >= 1012px view.
 // @match        https://github.com
 // @grant        none
@@ -14,10 +14,10 @@
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
 const githubNoDiscoverStyle = document.createElement('style');
+githubNoDiscoverStyle.setAttribute('media', '(min-width: 1012px)');
+githubNoDiscoverStyle.appendChild(document.createTextNode('')); // WebKit hack :(
+document.head.appendChild(githubNoDiscoverStyle);
 if (githubNoDiscoverStyle.sheet) {
-  githubNoDiscoverStyle.setAttribute('media', '(min-width: 1012px)');
-  githubNoDiscoverStyle.appendChild(document.createTextNode('')); // WebKit hack :(
-  document.head.appendChild(githubNoDiscoverStyle);
   githubNoDiscoverStyle.sheet.insertRule(
     'aside[aria-label="Explore"] { display: none; }',
     0,

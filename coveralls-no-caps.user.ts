@@ -4,7 +4,7 @@
 // @match        https://coveralls.io/*
 // @name         Coveralls no-all-caps
 // @namespace    http://tat.sh/
-// @version      0.1.0
+// @version      0.1.1
 // @author       nightbread
 // @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/coveralls-no-caps.user.js
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/coveralls-no-caps.user.js
@@ -14,9 +14,9 @@
 // ==/UserScript==
 // From https://davidwalsh.name/add-rules-stylesheets
 const coverallsNoCapsStyle = document.createElement('style');
+coverallsNoCapsStyle.appendChild(document.createTextNode('')); // WebKit hack :(
+document.head.appendChild(coverallsNoCapsStyle);
 if (coverallsNoCapsStyle.sheet) {
-  coverallsNoCapsStyle.appendChild(document.createTextNode('')); // WebKit hack :(
-  document.head.appendChild(coverallsNoCapsStyle);
   coverallsNoCapsStyle.sheet.insertRule(
     '* { text-transform: none !important; }',
     0,
