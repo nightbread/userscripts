@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         Monospace for code
-// @version      0.0.1
+// @version      0.0.2
 // @description  Use plain monospace for code on GitHub and other sites.
 // @match        https://github.com/*
 // @match        https://gist.github.com/*
