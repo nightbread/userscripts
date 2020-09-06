@@ -14,9 +14,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "project": "./tsconfig.json",
-    "sourceType": "module"
+    "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "prettier", "typescript-sort-keys"],
   "rules": {
@@ -60,6 +58,7 @@
           1,
           2,
           3,
+          4,
           10,
           100,
           200,
