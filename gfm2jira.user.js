@@ -1,4 +1,17 @@
 'use strict';
+// ==UserScript==
+// @description  Convert Markdown to JIRA syntax in any Wiki textarea
+// @grant        none
+// @match        *://*/*
+// @name         Convert GFM to JIRA
+// @version      0.3.1
+// @author       nightbread
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/gfm2jira.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/gfm2jira.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
+// ==/UserScript==
 const KEYCODE_ESCAPE = 27;
 const KEYCODE_NON_CONVERSION = 29;
 const MAP = {

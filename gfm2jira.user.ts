@@ -11,6 +11,7 @@
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
+
 // From https://github.com/FokkeZB/J2M/blob/master/src/J2M.js
 type WindowAJS = Window &
   typeof globalThis & {
