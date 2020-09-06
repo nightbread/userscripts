@@ -1,17 +1,17 @@
 // ==UserScript==
 // @name         No Discover
-// @homepage     https://gist.github.com/TheGuardian/d1b5a039d6f511c95a08daade8b07a81
-// @namespace    https://theguardi.an
-// @version      0.0.5
+// @version      0.0.6
 // @description  Hide the Discover section in >= 1012px view.
-// @author       Meh
 // @match        https://github.com
 // @grant        none
 // @run-at       document-end
-// @updateURL    https://gist.github.com/TheGuardian/d1b5a039d6f511c95a08daade8b07a81/raw/github-no-discover.user.js
-// @downloadURL  https://gist.github.com/TheGuardian/d1b5a039d6f511c95a08daade8b07a81/raw/github-no-discover.user.js
-// @supportURL   https://theguardi.an
 // @noframes
+// @author       nightbread
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/github-no-discover.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/github-no-discover.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
 // ==/UserScript==
 const githubNoDiscoverStyle = document.createElement('style');
 if (githubNoDiscoverStyle.sheet) {

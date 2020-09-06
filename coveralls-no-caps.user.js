@@ -1,12 +1,17 @@
 'use strict';
 // ==UserScript==
-// @author       You
-// @description  try to take over the world!
+// @description  No ALL CAPS on Coveralls.
 // @grant        none
 // @match        https://coveralls.io/*
 // @name         Coveralls no-all-caps
 // @namespace    http://tat.sh/
 // @version      0.1
+// @author       nightbread
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/coveralls-no-caps.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/coveralls-no-caps.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
 // ==/UserScript==
 // From https://davidwalsh.name/add-rules-stylesheets
 const coverallsNoCapsStyle = document.createElement('style');

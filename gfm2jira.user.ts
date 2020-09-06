@@ -1,11 +1,15 @@
 // ==UserScript==
-// @author       You
 // @description  Convert Markdown to JIRA syntax in any Wiki textarea
 // @grant        none
-// @match        https://
+// @match        *://*/*
 // @name         Convert GFM to JIRA
-// @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.3.1
+// @author       nightbread
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/gfm2jira.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/gfm2jira.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
 // ==/UserScript==
 // From https://github.com/FokkeZB/J2M/blob/master/src/J2M.js
 type WindowAJS = Window &

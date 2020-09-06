@@ -1,14 +1,18 @@
 // ==UserScript==
 // @name         Monospace for code
-// @namespace    http://theguardi.an/
-// @version      0.0.1
-// @description  Use plain monospace for code on GitHub
-// @author       TheGuardian
+// @version      0.0.2
+// @description  Use plain monospace for code on GitHub and other sites.
 // @match        https://github.com/*
 // @match        https://gist.github.com/*
 // @match        https://gitlab.com/*
 // @match        https://bitbucket.org/*
 // @grant        none
+// @author       nightbread
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/code-font.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/code-font.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
 // ==/UserScript==
 
 const codeFontStyle = document.createElement('style');

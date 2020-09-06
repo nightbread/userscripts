@@ -1,9 +1,16 @@
 // ==UserScript==
 // @name         Uneventful
-// @namespace    https://microsoft.com/
-// @version      1.3.7
+// @version      1.3.8
 // @description  Prevent annoying events from being bound.
+// @grant        none
+// @run-at       document-start
+// @author       nightbread
 // @author       Audreyshake of Reddit
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
 // @match        *://*/*
 // @exclude *://*.adp.com/*
 // @exclude *://*.arin.net/*
@@ -25,10 +32,6 @@
 // @exclude *://gab.com/*
 // @exclude *://github.com/*
 // @exclude *://gitlab.com/*
-// @grant        none
-// @run-at       document-start
-// @updateURL https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
-// @downloadURL https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
 // ==/UserScript==
 // Inspired by <http://stackoverflow.com/a/10326899>.
 /** Movement events. */
