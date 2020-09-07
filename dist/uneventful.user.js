@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         Uneventful
-// @version      1.3.8
+// @version      1.3.9
 // @description  Prevent annoying events from being bound.
 // @grant        none
 // @run-at       document-start
