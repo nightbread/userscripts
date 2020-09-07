@@ -85,38 +85,15 @@ const superDomains = function* (domain) {
  * @returns Returns `true` if the event is allowed.
  */
 const doesCanEvent = (domain, event) => {
-  var _a, _b, _c, _d, _e, _f, _g, _h;
   for (const domain_ of superDomains(domain)) {
-    if (
-      ((_b =
-        (_a = domainPermissions[domain_]) === null || _a === void 0
-          ? void 0
-          : _a.deny) === null || _b === void 0
-        ? void 0
-        : _b.includes(event)) ||
-      ((_d =
-        (_c = domainPermissions[domain_]) === null || _c === void 0
-          ? void 0
-          : _c.deny) === null || _d === void 0
-        ? void 0
-        : _d.includes('*'))
-    ) {
-      return false;
-    } else if (
-      ((_f =
-        (_e = domainPermissions[domain_]) === null || _e === void 0
-          ? void 0
-          : _e.allow) === null || _f === void 0
-        ? void 0
-        : _f.includes(event)) ||
-      ((_h =
-        (_g = domainPermissions[domain_]) === null || _g === void 0
-          ? void 0
-          : _g.allow) === null || _h === void 0
-        ? void 0
-        : _h.includes('*'))
-    ) {
-      return true;
+    if (domainPermissions[domain_]) {
+      const deny = domainPermissions[domain_].deny;
+      const allow = domainPermissions[domain_].allow;
+      if (deny && (deny.includes(event) || deny.includes('*'))) {
+        return false;
+      } else if (allow && (allow.includes(event) || allow.includes('*'))) {
+        return true;
+      }
     }
   }
   return false;
