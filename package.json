@@ -22,7 +22,7 @@
     "url": "git+https://github.com/nightbread/userscripts.git"
   },
   "scripts": {
-    "build": "tsc && prettier --write *.js"
+    "build": "tsc && prettier --write dist/*.js"
   },
   "version": "1.3.4"
 }
