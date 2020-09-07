@@ -1,14 +1,14 @@
 'use strict';
 // ==UserScript==
 // @name         Uneventful
-// @version      1.3.9
+// @version      1.3.10
 // @description  Prevent annoying events from being bound.
 // @grant        none
 // @run-at       document-start
 // @author       nightbread
 // @author       Audreyshake of Reddit
-// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
-// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/uneventful.user.js
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/uneventful.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/uneventful.user.js
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/

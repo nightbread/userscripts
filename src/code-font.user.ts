@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Monospace for code
-// @version      0.0.3
+// @version      0.0.4
 // @description  Use plain monospace for code on GitHub and other sites.
 // @match        https://github.com/*
 // @match        https://gist.github.com/*
@@ -8,8 +8,8 @@
 // @match        https://bitbucket.org/*
 // @grant        none
 // @author       nightbread
-// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/code-font.user.js
-// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/code-font.user.js
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/code-font.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/code-font.user.js
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/

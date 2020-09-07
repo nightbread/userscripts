@@ -3,10 +3,10 @@
 // @grant        none
 // @match        *://*/*
 // @name         Convert GFM to JIRA
-// @version      0.3.1
+// @version      0.3.2
 // @author       nightbread
-// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/gfm2jira.user.js
-// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/gfm2jira.user.js
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/gfm2jira.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/gfm2jira.user.js
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/

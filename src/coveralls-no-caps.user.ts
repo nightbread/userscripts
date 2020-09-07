@@ -4,10 +4,10 @@
 // @match        https://coveralls.io/*
 // @name         Coveralls no-all-caps
 // @namespace    http://tat.sh/
-// @version      0.1.1
+// @version      0.1.2
 // @author       nightbread
-// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/coveralls-no-caps.user.js
-// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/coveralls-no-caps.user.js
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/coveralls-no-caps.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/coveralls-no-caps.user.js
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
