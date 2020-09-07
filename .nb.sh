@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 export GIT_SSH="$HOME/.local/bin/nb-git-ssh"
 if ! [ -f "$GIT_SSH" ]; then
+    # shellcheck disable=SC2016
     echo 'Fix missing $GIT_SSH!' >&2
     exit 1
 fi
