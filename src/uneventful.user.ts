@@ -96,16 +96,14 @@ const doesCanEvent = (
   event: string,
 ) => {
   for (const domain_ of superDomains(domain)) {
-    if (
-      domainPermissions[domain_]?.deny?.includes(event) ||
-      domainPermissions[domain_]?.deny?.includes('*')
-    ) {
-      return false;
-    } else if (
-      domainPermissions[domain_]?.allow?.includes(event) ||
-      domainPermissions[domain_]?.allow?.includes('*')
-    ) {
-      return true;
+    if (domainPermissions[domain_]) {
+      const deny = domainPermissions[domain_].deny;
+      const allow = domainPermissions[domain_].allow;
+      if (deny && (deny.includes(event) || deny.includes('*'))) {
+        return false;
+      } else if (allow && (allow.includes(event) || allow.includes('*'))) {
+        return true;
+      }
     }
   }
   return false;
