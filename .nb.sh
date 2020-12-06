@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-export GIT_SSH="$HOME/.local/bin/nb-git-ssh"
-if ! [ -f "$GIT_SSH" ]; then
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)"
+export GIT_SSH="${DIR}/.nb-git-ssh"
+if ! [ -f "$GIT_SSH" ] || ! [ -f ~/.ssh/nb-id_rsa ]; then
     # shellcheck disable=SC2016
-    echo 'Fix missing $GIT_SSH!' >&2
+    echo 'Fix missing $GIT_SSH or missing ~/.ssh/nb-id_rsa!' >&2
     exit 1
 fi
 git config user.email nightbread@inbox.lv

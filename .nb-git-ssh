@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+ssh \
+    -o ControlMaster=no \
+    -o ControlPath=no \
+    -o StrictHostKeyChecking=no \
+    -o IdentityFile="$HOME/.ssh/nb-id_rsa" \
+    "$@"
