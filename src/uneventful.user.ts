@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Uneventful
-// @version      1.3.10
+// @version      1.4.0
 // @description  Prevent annoying events from being bound.
 // @grant        none
 // @run-at       document-start
@@ -11,38 +11,20 @@
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
-// @match        *://*/*
-// @exclude *://*.adp.com/*
-// @exclude *://*.arin.net/*
-// @exclude *://*.creditsesame.com/*
-// @exclude *://*.duke-energy.com/*
-// @exclude *://*.fedex.com/*
-// @exclude *://*.gamespot.com/*
-// @exclude *://*.geico.com/*
-// @exclude *://*.ignitioncasino.com/*
-// @exclude *://*.inbox.lv/*
-// @exclude *://*.marcos.com/*
-// @exclude *://*.ring.com/*
-// @exclude *://*.seminolewildcard.com/*
-// @exclude *://*.slack.com/*
-// @exclude *://*.sony.com/*
-// @exclude *://*.speedpay.com/*
-// @exclude *://*.universalorlando.com/*
-// @exclude *://*.youtube.com/*
-// @exclude *://gab.com/*
-// @exclude *://github.com/*
-// @exclude *://gitlab.com/*
+// @match *://*.dailystormer.su/*
+// @match *://*.gameruprising.to/*
+// @match *://*.unicornriot.ninja/*
 // ==/UserScript==
 // Inspired by <http://stackoverflow.com/a/10326899>.
 /** Movement events. */
-const movementEvents = [
+const movementEvents = new Set([
   'keydown',
   'keypress',
   'keyup',
   'wheel',
   'mousewheel', // Deprecated but apparently still accepted by Chrome
   'scroll',
-];
+]);
 /**
  * Search domain, super-domains, default.
  * Order: deny, allow.
@@ -53,8 +35,8 @@ const movementEvents = [
  */
 const domainPermissions: {
   [domain: string]: {
-    allow?: '*' | string[];
-    deny?: '*' | string[];
+    allow?: '*' | Set<string>;
+    deny?: '*' | Set<string>;
   };
 } = {
   '.dailystormer.su': {
@@ -64,12 +46,12 @@ const domainPermissions: {
     deny: movementEvents,
   },
   DEFAULT: {
-    allow: '*',
+    deny: '*',
   },
 };
 /** Sites that do not like overriding addEventListener to be read-only. */
 const aelBlacklist = ['.icloud.com'];
-/** Generate superdomains of a domain. */
+/** Generate super-domains of a domain. */
 const superDomains = function* (
   domain: keyof typeof domainPermissions,
 ): Generator<keyof typeof domainPermissions | string | 'DEFAULT'> {
@@ -99,9 +81,9 @@ const doesCanEvent = (
     if (domainPermissions[domain_]) {
       const deny = domainPermissions[domain_].deny;
       const allow = domainPermissions[domain_].allow;
-      if (deny && (deny.includes(event) || deny.includes('*'))) {
+      if (deny && (deny === '*' || deny.has(event))) {
         return false;
-      } else if (allow && (allow.includes(event) || allow.includes('*'))) {
+      } else if (allow && (allow === '*' || allow.has(event))) {
         return true;
       }
     }
