@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         No animations
-// @version      0.0.2
+// @version      0.0.3
 // @description  Disable animations.
 // @match        *://*/*
 // @grant        none
@@ -14,17 +14,15 @@
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
-const noAnimationStyle = document.createElement('style');
-noAnimationStyle.appendChild(document.createTextNode('')); // WebKit hack :(
-document.head.appendChild(noAnimationStyle);
-if (noAnimationStyle.sheet) {
-  noAnimationStyle.sheet.insertRule(
+((element, doc, head) =>
+  head.appendChild((element.appendChild(doc.createTextNode('')), element)) &&
+  element.sheet &&
+  element.sheet.insertRule(
     `*, :before, :after {
-      /*CSS transitions*/
-      transition-property: none !important;
-      /*CSS animations*/
-      animation: none !important;
-    }`,
+          /*CSS transitions*/
+          transition-property: none !important;
+          /*CSS animations*/
+          animation: none !important;
+        }`,
     0,
-  );
-}
+  ))(document.createElement('style'), document, document.head);
