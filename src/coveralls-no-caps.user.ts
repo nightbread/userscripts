@@ -4,7 +4,7 @@
 // @match        https://coveralls.io/*
 // @name         Coveralls no-all-caps
 // @namespace    http://tat.sh/
-// @version      0.1.2
+// @version      0.1.3
 // @author       nightbread
 // @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/coveralls-no-caps.user.js
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/coveralls-no-caps.user.js

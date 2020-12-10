@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         Uneventful
-// @version      1.4.0
+// @version      1.4.1
 // @description  Prevent annoying events from being bound.
 // @grant        none
 // @run-at       document-start
@@ -13,7 +13,6 @@
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
 // @match *://*.dailystormer.su/*
-// @match *://*.gameruprising.to/*
 // @match *://*.unicornriot.ninja/*
 // ==/UserScript==
 // Inspired by <http://stackoverflow.com/a/10326899>.
