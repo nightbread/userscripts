@@ -1,5 +1,5 @@
 'use strict';
-var _a;
+var _a, _b;
 // ==UserScript==
 // @name         No Nonsense
 // @namespace    http://wwww.theguardian.com/
@@ -8,6 +8,7 @@ var _a;
 // @noframes
 // @author       nightbread
 // @match        https://expressjs.com/*
+// @match        https://api.jquery.com/*
 // @grant        none
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
@@ -17,6 +18,9 @@ var _a;
 (_a = document.querySelector('#blm-banner')) === null || _a === void 0
   ? void 0
   : _a.remove();
+(_b = document.querySelector('#banner-blm')) === null || _b === void 0
+  ? void 0
+  : _b.remove();
 ((element, doc, head) =>
   head.appendChild((element.appendChild(doc.createTextNode('')), element)) &&
   (el => {

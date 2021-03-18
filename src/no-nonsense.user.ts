@@ -6,6 +6,7 @@
 // @noframes
 // @author       nightbread
 // @match        https://expressjs.com/*
+// @match        https://api.jquery.com/*
 // @grant        none
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
@@ -13,6 +14,7 @@
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/no-nonsense.user.js
 // ==/UserScript==
 document.querySelector('#blm-banner')?.remove();
+document.querySelector('#banner-blm')?.remove();
 ((element, doc, head) =>
   head.appendChild((element.appendChild(doc.createTextNode('')), element)) &&
   (el => {
