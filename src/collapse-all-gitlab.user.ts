@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Collapse all GitLab diffs
 // @namespace    https://github.com/johanbrandhorst/collapse-gitlab-files
-// @version      0.3.5
+// @version      0.3.6
 // @description  Collapses all files on a GitLab merge request diff page
 // @author       Johan Brandhorst
 // @grant        none
@@ -18,6 +18,7 @@
 const button = document.createElement('a');
 button.setAttribute('id', 'collapse-button');
 button.setAttribute('class', 'btn btn-default');
+button.style.cursor = 'pointer';
 button.textContent = 'Collapse All';
 const buttons = document.querySelector('.inline-parallel-buttons');
 if (buttons?.firstChild) {
