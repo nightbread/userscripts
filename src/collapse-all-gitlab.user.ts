@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Collapse all GitLab diffs
 // @namespace    https://github.com/johanbrandhorst/collapse-gitlab-files
-// @version      0.3.4
+// @version      0.3.5
 // @description  Collapses all files on a GitLab merge request diff page
 // @author       Johan Brandhorst
 // @grant        none
@@ -27,18 +27,17 @@ const handler = () =>
   Array.from(
     document.querySelectorAll<HTMLDivElement>('.diff-file .diff-content'),
   )
-    .filter(x => x.style.display === 'none')
-    .forEach(x => {
-      let el = x.parentElement?.querySelector<HTMLDivElement>(
-        '.file-title-flex-parent',
-      );
-      if (!el) {
-        el = x.parentElement?.parentElement?.querySelector<HTMLDivElement>(
+    .filter(x => x.style.display !== 'none')
+    .forEach(x =>
+      (
+        x.parentElement?.querySelector<HTMLDivElement>(
           '.file-title-flex-parent',
-        );
-      }
-      el?.click();
-    });
+        ) ||
+        x.parentElement?.parentElement?.querySelector<HTMLDivElement>(
+          '.file-title-flex-parent',
+        )
+      )?.click(),
+    );
 button.addEventListener('click', handler, false);
 document.addEventListener(
   'keydown',
