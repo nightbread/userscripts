@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Xirvik rutorrent inactivity
+// @name         Xirvik ruTorrent inactivity
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  try to take over the world!
 // @author       You
 // @match        https://*.xirvik.com/rtorrent/
@@ -14,100 +14,56 @@
 // ==/UserScript==
 
 interface IdleOptions {
-  awayTimeout: number;
   onAway?: () => void;
   onAwayBack?: () => void;
   onHidden?: () => void;
   onVisible?: () => void;
 }
 
-class Idle {
-  private awayTimeout = 3000;
-  private awayTimer?: number;
-  private awayTimestamp = 0;
-  private isAway = false;
-  private onAway?: () => void;
-  private onAwayBack?: () => void;
-  private onHidden?: () => void;
-  private onVisible?: () => void;
-
-  constructor(options?: IdleOptions) {
-    if (options) {
-      this.awayTimeout = options.awayTimeout;
-      this.onAway = options.onAway;
-      this.onAwayBack = options.onAwayBack;
-      this.onHidden = options.onHidden;
-      this.onVisible = options.onVisible;
-    }
-    const activeMethod = this.onActive.bind(this);
-    window.onclick = activeMethod;
-    window.onkeydown = activeMethod;
-    window.onmouseenter = activeMethod;
-    window.onmousemove = activeMethod;
-    window.onscroll = activeMethod;
-    this.startAwayTimeout();
-    document.addEventListener(
-      'visibilitychange',
-      () => {
-        if (document.hidden) {
-          if (this.onHidden) {
-            this.onHidden();
-          }
-        } else {
-          if (this.onVisible) {
-            this.onVisible();
-          }
-        }
-      },
-      false,
-    );
-  }
-
-  private onActive(): boolean {
-    this.awayTimestamp = new Date().getTime() + this.awayTimeout;
-    if (this.isAway) {
-      if (this.onAwayBack) {
-        this.onAwayBack();
-      }
-      this.startAwayTimeout();
-    }
-    this.isAway = false;
-    return true;
-  }
-
-  private startAwayTimeout(): number {
-    this.awayTimestamp = new Date().getTime() + this.awayTimeout;
-    if (typeof this.awayTimer !== 'undefined') {
-      clearTimeout(this.awayTimer);
-    }
-    return (this.awayTimer = setTimeout(
-      this.checkAway.bind(this),
-      this.awayTimeout + 100,
-    ));
-  }
-
-  private checkAway(): void {
+const IDLE_TIME = 3e5;
+const idle = (awayTimeout = 3000, options?: IdleOptions) => {
+  let awayTimer = void 0 as number | undefined;
+  let awayTimestamp = void 0 as number | undefined;
+  let isAway = false;
+  const checkAway = () => {
     const t = new Date().getTime();
-    if (t < this.awayTimestamp) {
-      this.isAway = false;
-      this.awayTimer = setTimeout(
-        this.checkAway.bind(this),
-        this.awayTimestamp - t + 100,
-      );
+    awayTimestamp ||= new Date().getTime() + awayTimeout;
+    if (t < awayTimestamp) {
+      isAway = false;
+      awayTimer = setTimeout(checkAway, awayTimestamp - t + 100);
       return;
     }
-    if (typeof this.awayTimer !== 'undefined') {
-      clearTimeout(this.awayTimer);
+    if (typeof awayTimer !== 'undefined') {
+      clearTimeout(awayTimer);
     }
-    this.isAway = true;
-    if (this.onAway) {
-      this.onAway();
+    isAway = true;
+    options?.onAway?.();
+  };
+  const startAwayTimeout = () => {
+    awayTimestamp = new Date().getTime() + awayTimeout;
+    if (typeof awayTimer !== 'undefined') {
+      clearTimeout(awayTimer);
     }
-  }
-}
+    return (awayTimer = setTimeout(checkAway, awayTimeout + 100));
+  };
+  window.onclick = window.onkeydown = window.onmouseenter = window.onmousemove = window.onscroll = () => {
+    awayTimestamp = new Date().getTime() + awayTimeout;
+    if (isAway) {
+      options?.onAwayBack?.();
+      startAwayTimeout();
+    }
+    isAway = false;
+    return true;
+  };
+  startAwayTimeout();
+  document.addEventListener(
+    'visibilitychange',
+    () => (document.hidden ? options?.onHidden?.() : options?.onVisible?.()),
+    false,
+  );
+};
 
-new Idle({
-  awayTimeout: 3e5,
+idle(IDLE_TIME, {
   onAway: () =>
     (location.href = `https://${location.hostname}/downloads/#inactivityrt=true`),
 });

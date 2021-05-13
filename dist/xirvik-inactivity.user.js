@@ -1,8 +1,8 @@
 'use strict';
 // ==UserScript==
-// @name         Xirvik rutorrent inactivity
+// @name         Xirvik ruTorrent inactivity
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  try to take over the world!
 // @author       You
 // @match        https://*.xirvik.com/rtorrent/
@@ -13,83 +13,74 @@
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
-class Idle {
-  constructor(options) {
-    this.awayTimeout = 3000;
-    this.awayTimestamp = 0;
-    this.isAway = false;
-    if (options) {
-      this.awayTimeout = options.awayTimeout;
-      this.onAway = options.onAway;
-      this.onAwayBack = options.onAwayBack;
-      this.onHidden = options.onHidden;
-      this.onVisible = options.onVisible;
-    }
-    const activeMethod = this.onActive.bind(this);
-    window.onclick = activeMethod;
-    window.onkeydown = activeMethod;
-    window.onmouseenter = activeMethod;
-    window.onmousemove = activeMethod;
-    window.onscroll = activeMethod;
-    this.startAwayTimeout();
-    document.addEventListener(
-      'visibilitychange',
-      () => {
-        if (document.hidden) {
-          if (this.onHidden) {
-            this.onHidden();
-          }
-        } else {
-          if (this.onVisible) {
-            this.onVisible();
-          }
-        }
-      },
-      false,
-    );
-  }
-  onActive() {
-    this.awayTimestamp = new Date().getTime() + this.awayTimeout;
-    if (this.isAway) {
-      if (this.onAwayBack) {
-        this.onAwayBack();
-      }
-      this.startAwayTimeout();
-    }
-    this.isAway = false;
-    return true;
-  }
-  startAwayTimeout() {
-    this.awayTimestamp = new Date().getTime() + this.awayTimeout;
-    if (typeof this.awayTimer !== 'undefined') {
-      clearTimeout(this.awayTimer);
-    }
-    return (this.awayTimer = setTimeout(
-      this.checkAway.bind(this),
-      this.awayTimeout + 100,
-    ));
-  }
-  checkAway() {
+const IDLE_TIME = 3e5;
+const idle = (awayTimeout = 3000, options) => {
+  let awayTimer = void 0;
+  let awayTimestamp = void 0;
+  let isAway = false;
+  const checkAway = () => {
+    var _a;
     const t = new Date().getTime();
-    if (t < this.awayTimestamp) {
-      this.isAway = false;
-      this.awayTimer = setTimeout(
-        this.checkAway.bind(this),
-        this.awayTimestamp - t + 100,
-      );
+    awayTimestamp || (awayTimestamp = new Date().getTime() + awayTimeout);
+    if (t < awayTimestamp) {
+      isAway = false;
+      awayTimer = setTimeout(checkAway, awayTimestamp - t + 100);
       return;
     }
-    if (typeof this.awayTimer !== 'undefined') {
-      clearTimeout(this.awayTimer);
+    if (typeof awayTimer !== 'undefined') {
+      clearTimeout(awayTimer);
     }
-    this.isAway = true;
-    if (this.onAway) {
-      this.onAway();
+    isAway = true;
+    (_a = options === null || options === void 0 ? void 0 : options.onAway) ===
+      null || _a === void 0
+      ? void 0
+      : _a.call(options);
+  };
+  const startAwayTimeout = () => {
+    awayTimestamp = new Date().getTime() + awayTimeout;
+    if (typeof awayTimer !== 'undefined') {
+      clearTimeout(awayTimer);
     }
-  }
-}
-new Idle({
-  awayTimeout: 3e5,
+    return (awayTimer = setTimeout(checkAway, awayTimeout + 100));
+  };
+  window.onclick = window.onkeydown = window.onmouseenter = window.onmousemove = window.onscroll = () => {
+    var _a;
+    awayTimestamp = new Date().getTime() + awayTimeout;
+    if (isAway) {
+      (_a =
+        options === null || options === void 0
+          ? void 0
+          : options.onAwayBack) === null || _a === void 0
+        ? void 0
+        : _a.call(options);
+      startAwayTimeout();
+    }
+    isAway = false;
+    return true;
+  };
+  startAwayTimeout();
+  document.addEventListener(
+    'visibilitychange',
+    () => {
+      var _a, _b;
+      return document.hidden
+        ? (_a =
+            options === null || options === void 0
+              ? void 0
+              : options.onHidden) === null || _a === void 0
+          ? void 0
+          : _a.call(options)
+        : (_b =
+            options === null || options === void 0
+              ? void 0
+              : options.onVisible) === null || _b === void 0
+        ? void 0
+        : _b.call(options);
+    },
+    false,
+  );
+};
+idle(IDLE_TIME, {
   onAway: () =>
     (location.href = `https://${location.hostname}/downloads/#inactivityrt=true`),
 });
