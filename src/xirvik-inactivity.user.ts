@@ -6,6 +6,11 @@
 // @author       You
 // @match        https://*.xirvik.com/rtorrent/
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/xirvik-inactivity.user.js
+// @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/xirvik-inactivity.user.js
+// @homepage     https://github.com/nightbread/userscripts
+// @supportURL   https://www.theguardian.com/
+// @namespace    https://www.theguardian.com/
 // ==/UserScript==
 
 interface IdleOptions {
