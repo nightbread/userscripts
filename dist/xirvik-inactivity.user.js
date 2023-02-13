@@ -43,21 +43,26 @@ const idle = (awayTimeout = 3000, options) => {
     }
     return (awayTimer = setTimeout(checkAway, awayTimeout + 100));
   };
-  window.onclick = window.onkeydown = window.onmouseenter = window.onmousemove = window.onscroll = () => {
-    var _a;
-    awayTimestamp = new Date().getTime() + awayTimeout;
-    if (isAway) {
-      (_a =
-        options === null || options === void 0
-          ? void 0
-          : options.onAwayBack) === null || _a === void 0
-        ? void 0
-        : _a.call(options);
-      startAwayTimeout();
-    }
-    isAway = false;
-    return true;
-  };
+  window.onclick =
+    window.onkeydown =
+    window.onmouseenter =
+    window.onmousemove =
+    window.onscroll =
+      () => {
+        var _a;
+        awayTimestamp = new Date().getTime() + awayTimeout;
+        if (isAway) {
+          (_a =
+            options === null || options === void 0
+              ? void 0
+              : options.onAwayBack) === null || _a === void 0
+            ? void 0
+            : _a.call(options);
+          startAwayTimeout();
+        }
+        isAway = false;
+        return true;
+      };
   startAwayTimeout();
   document.addEventListener(
     'visibilitychange',
