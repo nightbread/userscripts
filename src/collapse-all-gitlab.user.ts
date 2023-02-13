@@ -5,8 +5,10 @@
 // @description  Collapses all files on a GitLab merge request diff page
 // @author       Johan Brandhorst
 // @grant        none
-// @include      https://gitlab.com/*/merge_requests/*
-// @include      https://gitlab.com/*/commit/*
+// @match        https://gitlab.com/*/merge_requests/*
+// @match        https://gitlab.com/*/commit/*
+// @match        https://git.ringcentral.com/*/commit/*
+// @match        https://git.ringcentral.com/*/merge_requests/*
 // ==/UserScript==
 
 // Script based on script suggested by Pantelis Geo
@@ -24,7 +26,7 @@ const buttons = document.querySelector('.inline-parallel-buttons');
 if (buttons?.firstChild) {
   buttons.insertBefore(button, buttons.firstChild);
 }
-const handler = () =>
+const sharedHandler = () =>
   Array.from(
     document.querySelectorAll<HTMLDivElement>('.diff-file .diff-content'),
   )
@@ -39,12 +41,12 @@ const handler = () =>
         )
       )?.click(),
     );
-button.addEventListener('click', handler, false);
+button.addEventListener('click', sharedHandler, false);
 document.addEventListener(
   'keydown',
   e => {
-    if (!e.defaultPrevented && e.code === 'KeyK' && e.ctrlKey) {
-      handler();
+    if (!e.defaultPrevented && e.code === 'KeyK' && e.ctrlKey && e.shiftKey) {
+      sharedHandler();
       e.preventDefault();
     }
   },
