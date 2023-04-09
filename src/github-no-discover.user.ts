@@ -3,6 +3,7 @@
 // @version      0.1.0
 // @description  Hide the Discover section.
 // @match        https://github.com
+// @match        https://github.com/dashboard
 // @grant        none
 // @run-at       document-end
 // @noframes
@@ -14,11 +15,15 @@
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
 const col = document.querySelector(
-  'body > div.application-main > .d-md-flex > .flex-auto > .d-md-flex > .col-md-9',
+  '.application-main > .d-md-flex.color-bg-inset > .flex-auto > .gutter-md-spacious > div',
 );
 if (col) {
   col.querySelector('.mx-auto')?.setAttribute('style', '');
-  col.classList.replace('col-md-9', 'col-md-12');
-  col.classList.replace('col-lg-8', 'col-lg-12');
+  for (const cl of Array.from(col.classList)) {
+    if (/^col-/.test(cl)) {
+      col.classList.remove(cl);
+    }
+  }
+  col.classList.add('col-12');
 }
-document.querySelector('aside[aria-label="Explore"]')?.remove();
+document.querySelector('[aria-label="Explore"]')?.remove();
