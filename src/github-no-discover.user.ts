@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         No Discover
-// @version      0.1.0
+// @version      0.2.0
 // @description  Hide the Discover section.
 // @match        https://github.com
 // @match        https://github.com/dashboard
