@@ -17,14 +17,7 @@
 // ==/UserScript==
 // Inspired by <http://stackoverflow.com/a/10326899>.
 /** Movement events. */
-const movementEvents = new Set([
-  'keydown',
-  'keypress',
-  'keyup',
-  'wheel',
-  'mousewheel',
-  'scroll',
-]);
+const movementEvents = new Set(['keydown', 'keypress', 'keyup', 'wheel', 'mousewheel', 'scroll']);
 /**
  * Search domain, super-domains, default.
  * Order: deny, allow.
@@ -85,8 +78,7 @@ const doesCanEvent = (domain, event) => {
   element.addEventListener = function (...args) {
     if (!doesCanEvent(window.location.host, args[0])) {
       console.log(
-        `uneventful: Not binding "${args[0]}" event ` +
-          `(host: ${window.location.host})`,
+        `uneventful: Not binding "${args[0]}" event ` + `(host: ${window.location.host})`,
       );
       return;
     }
@@ -101,9 +93,7 @@ const doesCanEvent = (domain, event) => {
         args[2],
       );
     }
-    console.debug(
-      `uneventful: Successfully bound original "${args[0]}" event`,
-    );
+    console.debug(`uneventful: Successfully bound original "${args[0]}" event`);
   };
   // Keep scripts from redefining addEventListener. Since we've already
   // captured the real addEventListener, it isn't really necessary, but I'm

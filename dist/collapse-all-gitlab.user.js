@@ -22,28 +22,18 @@ button.setAttribute('class', 'btn btn-default');
 button.style.cursor = 'pointer';
 button.textContent = 'Collapse All';
 const buttons = document.querySelector('.inline-parallel-buttons');
-if (buttons === null || buttons === void 0 ? void 0 : buttons.firstChild) {
+if (buttons?.firstChild) {
   buttons.insertBefore(button, buttons.firstChild);
 }
 const sharedHandler = () =>
   Array.from(document.querySelectorAll('.diff-file .diff-content'))
     .filter(x => x.style.display !== 'none')
-    .forEach(x => {
-      var _a, _b, _c, _d;
-      return (_d =
-        ((_a = x.parentElement) === null || _a === void 0
-          ? void 0
-          : _a.querySelector('.file-title-flex-parent')) ||
-        ((_c =
-          (_b = x.parentElement) === null || _b === void 0
-            ? void 0
-            : _b.parentElement) === null || _c === void 0
-          ? void 0
-          : _c.querySelector('.file-title-flex-parent'))) === null ||
-        _d === void 0
-        ? void 0
-        : _d.click();
-    });
+    .forEach(x =>
+      (
+        x.parentElement?.querySelector('.file-title-flex-parent') ||
+        x.parentElement?.parentElement?.querySelector('.file-title-flex-parent')
+      )?.click(),
+    );
 button.addEventListener('click', sharedHandler, false);
 document.addEventListener(
   'keydown',

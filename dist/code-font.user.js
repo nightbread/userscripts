@@ -26,9 +26,6 @@
     // BitBucket
     '.view-lines',
     '.line-numbers > a',
-  ].forEach(selector => {
-    var _a;
-    return (_a = element.sheet) === null || _a === void 0
-      ? void 0
-      : _a.insertRule(`${selector} { font-family: monospace !important; }`, 0);
-  }))(document.createElement('style'), document, document.head);
+  ].forEach(selector =>
+    element.sheet?.insertRule(`${selector} { font-family: monospace !important; }`, 0),
+  ))(document.createElement('style'), document, document.head);

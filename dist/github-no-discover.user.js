@@ -1,8 +1,10 @@
+'use strict';
 // ==UserScript==
 // @name         No Discover
-// @version      0.1.0
+// @version      0.2.0
 // @description  Hide the Discover section.
 // @match        https://github.com
+// @match        https://github.com/dashboard
 // @grant        none
 // @run-at       document-end
 // @noframes
@@ -13,19 +15,16 @@
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
-'use strict';
-var _a, _b;
 const col = document.querySelector(
-  'body > div.application-main > .d-md-flex > .flex-auto > .d-md-flex > .col-md-9',
+  '.application-main > .d-md-flex.color-bg-inset > .flex-auto > .gutter-md-spacious > div',
 );
 if (col) {
-  (_a = col.querySelector('.mx-auto')) === null || _a === void 0
-    ? void 0
-    : _a.setAttribute('style', '');
-  col.classList.replace('col-md-9', 'col-md-12');
-  col.classList.replace('col-lg-8', 'col-lg-12');
+  col.querySelector('.mx-auto')?.setAttribute('style', '');
+  for (const cl of Array.from(col.classList)) {
+    if (/^col-/.test(cl)) {
+      col.classList.remove(cl);
+    }
+  }
+  col.classList.add('col-12');
 }
-(_b = document.querySelector('aside[aria-label="Explore"]')) === null ||
-_b === void 0
-  ? void 0
-  : _b.remove();
+document.querySelector('[aria-label="Explore"]')?.remove();
