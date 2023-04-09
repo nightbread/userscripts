@@ -27,18 +27,12 @@ if (buttons?.firstChild) {
   buttons.insertBefore(button, buttons.firstChild);
 }
 const sharedHandler = () =>
-  Array.from(
-    document.querySelectorAll<HTMLDivElement>('.diff-file .diff-content'),
-  )
+  Array.from(document.querySelectorAll<HTMLDivElement>('.diff-file .diff-content'))
     .filter(x => x.style.display !== 'none')
     .forEach(x =>
       (
-        x.parentElement?.querySelector<HTMLDivElement>(
-          '.file-title-flex-parent',
-        ) ||
-        x.parentElement?.parentElement?.querySelector<HTMLDivElement>(
-          '.file-title-flex-parent',
-        )
+        x.parentElement?.querySelector<HTMLDivElement>('.file-title-flex-parent') ||
+        x.parentElement?.parentElement?.querySelector<HTMLDivElement>('.file-title-flex-parent')
       )?.click(),
     );
 button.addEventListener('click', sharedHandler, false);

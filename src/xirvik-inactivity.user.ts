@@ -46,15 +46,20 @@ const idle = (awayTimeout = 3000, options?: IdleOptions) => {
     }
     return (awayTimer = setTimeout(checkAway, awayTimeout + 100));
   };
-  window.onclick = window.onkeydown = window.onmouseenter = window.onmousemove = window.onscroll = () => {
-    awayTimestamp = new Date().getTime() + awayTimeout;
-    if (isAway) {
-      options?.onAwayBack?.();
-      startAwayTimeout();
-    }
-    isAway = false;
-    return true;
-  };
+  window.onclick =
+    window.onkeydown =
+    window.onmouseenter =
+    window.onmousemove =
+    window.onscroll =
+      () => {
+        awayTimestamp = new Date().getTime() + awayTimeout;
+        if (isAway) {
+          options?.onAwayBack?.();
+          startAwayTimeout();
+        }
+        isAway = false;
+        return true;
+      };
   startAwayTimeout();
   document.addEventListener(
     'visibilitychange',
@@ -64,6 +69,5 @@ const idle = (awayTimeout = 3000, options?: IdleOptions) => {
 };
 
 idle(IDLE_TIME, {
-  onAway: () =>
-    (location.href = `https://${location.hostname}/downloads/#inactivityrt=true`),
+  onAway: () => (location.href = `https://${location.hostname}/downloads/#inactivityrt=true`),
 });

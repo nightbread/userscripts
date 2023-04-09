@@ -26,8 +26,5 @@
     '.view-lines',
     '.line-numbers > a',
   ].forEach(selector =>
-    element.sheet?.insertRule(
-      `${selector} { font-family: monospace !important; }`,
-      0,
-    ),
+    element.sheet?.insertRule(`${selector} { font-family: monospace !important; }`, 0),
   ))(document.createElement('style'), document, document.head);

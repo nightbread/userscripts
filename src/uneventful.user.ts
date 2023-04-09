@@ -57,8 +57,7 @@ const superDomains = function* (
   yield domain as string;
   yield '.' + (domain as string);
   for (
-    let last = domain as string,
-      next = (domain as string).replace(/..*?\./, '.');
+    let last = domain as string, next = (domain as string).replace(/..*?\./, '.');
     next != last;
     next = last.replace(/..*?\./, '.'), last = next
   ) {
@@ -72,10 +71,7 @@ const superDomains = function* (
  * @param event Event name.
  * @returns Returns `true` if the event is allowed.
  */
-const doesCanEvent = (
-  domain: keyof typeof domainPermissions,
-  event: string,
-) => {
+const doesCanEvent = (domain: keyof typeof domainPermissions, event: string) => {
   for (const domain_ of superDomains(domain)) {
     if (domainPermissions[domain_]) {
       const deny = domainPermissions[domain_].deny;
@@ -93,16 +89,11 @@ const doesCanEvent = (
 [HTMLElement.prototype, document, window].forEach(element => {
   const ael = element.addEventListener;
   element.addEventListener = function (
-    ...args: [
-      string,
-      EventListenerOrEventListenerObject,
-      (boolean | AddEventListenerOptions)?,
-    ]
+    ...args: [string, EventListenerOrEventListenerObject, (boolean | AddEventListenerOptions)?]
   ) {
     if (!doesCanEvent(window.location.host, args[0])) {
       console.log(
-        `uneventful: Not binding "${args[0]}" event ` +
-          `(host: ${window.location.host})`,
+        `uneventful: Not binding "${args[0]}" event ` + `(host: ${window.location.host})`,
       );
       return;
     }
@@ -117,9 +108,7 @@ const doesCanEvent = (
         args[2],
       );
     }
-    console.debug(
-      `uneventful: Successfully bound original "${args[0]}" event`,
-    );
+    console.debug(`uneventful: Successfully bound original "${args[0]}" event`);
   };
   // Keep scripts from redefining addEventListener. Since we've already
   // captured the real addEventListener, it isn't really necessary, but I'm
