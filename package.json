@@ -4,14 +4,14 @@
     "url": "https://github.com/nightbread/userscripts/issues"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
-    "eslint": "^7.8.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-typescript-sort-keys": "^1.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "prettier": "^2.1.1",
-    "typescript": "^4.0.2"
+    "typescript": "^5.0.4"
   },
   "description": "Random userscripts.",
   "homepage": "https://github.com/nightbread/userscripts",
