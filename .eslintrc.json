@@ -7,7 +7,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:prettier/recommended",
     "plugin:typescript-sort-keys/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
