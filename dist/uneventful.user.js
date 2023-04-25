@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         Uneventful
-// @version      1.4.1
+// @version      1.4.2
 // @description  Prevent annoying events from being bound.
 // @grant        none
 // @run-at       document-start
@@ -12,7 +12,6 @@
 // @homepage     https://github.com/nightbread/userscripts
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
-// @match *://*.dailystormer.su/*
 // @match *://*.unicornriot.ninja/*
 // ==/UserScript==
 // Inspired by <http://stackoverflow.com/a/10326899>.
@@ -27,9 +26,6 @@ const movementEvents = new Set(['keydown', 'keypress', 'keyup', 'wheel', 'mousew
  * 'my.domain' to match only 'my.domain'.
  */
 const domainPermissions = {
-  '.dailystormer.su': {
-    deny: movementEvents,
-  },
   '.unicornriot.ninja': {
     deny: movementEvents,
   },
@@ -85,13 +81,14 @@ const doesCanEvent = (domain, event) => {
     try {
       ael.apply(this, args);
     } catch (e) {
-      return console.debug(
+      console.debug(
         `uneventful: Did not bind original "${args[0]}" event`,
         e,
         element,
         args[1],
         args[2],
       );
+      return;
     }
     console.debug(`uneventful: Successfully bound original "${args[0]}" event`);
   };

@@ -2,7 +2,7 @@
 // ==UserScript==
 // @name         No Nonsense
 // @namespace    http://wwww.theguardian.com/
-// @version      0.0.1
+// @version      0.0.2
 // @description  Remove nonsense.
 // @noframes
 // @author       nightbread
@@ -14,15 +14,6 @@
 // @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/no-nonsense.user.js
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/no-nonsense.user.js
 // ==/UserScript==
-document.querySelector('#blm-banner')?.remove();
-document.querySelector('#banner-blm')?.remove();
-((element, doc, head) =>
-  head.appendChild((element.appendChild(doc.createTextNode('')), element)) &&
-  (el => {
-    el.sheet?.insertRule('#logo a { margin-top: 0 !important }', 0);
-    el.sheet?.insertRule(`.content > header,
-      #home-content > header {
-        height: 60px !important;
-      }`);
-    el.sheet?.insertRule('#menu { top: 64px !important }');
-  })(element))(document.createElement('style'), document, document.head);
+for (const selector of ['#banner-blm', '#blm-banner']) {
+  document.querySelectorAll(selector).forEach(x => x.remove());
+}

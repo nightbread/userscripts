@@ -4,7 +4,7 @@
 // @grant        none
 // @match        *://*/*
 // @name         Convert GFM to JIRA
-// @version      0.3.2
+// @version      0.3.3
 // @author       nightbread
 // @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/gfm2jira.user.js
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/gfm2jira.user.js
@@ -31,7 +31,8 @@ const toM = input =>
   input
     .replace(
       /^h([0-6])\.(.*)$/gm,
-      (_, level, content) => `${Array(parseInt(level, 10) + 1).join('#')}${content}`,
+      (_, level, content) =>
+        `${Array(parseInt(typeof level === 'string' ? level : '0', 10) + 1).join('#')}${content}`,
     )
     .replace(
       /([*_])(.*)\1/g,

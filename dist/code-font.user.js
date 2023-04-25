@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         Monospace for code
-// @version      0.0.5
+// @version      0.0.6
 // @description  Use plain monospace for code on GitHub and other sites.
 // @match        https://github.com/*
 // @match        https://gist.github.com/*
@@ -15,10 +15,11 @@
 // @supportURL   https://www.theguardian.com/
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
-((element, doc, head) =>
-  head.appendChild((element.appendChild(doc.createTextNode('')), element)) &&
-  element.sheet &&
-  [
+const codeFontStyle = document.createElement('style');
+codeFontStyle.appendChild(document.createTextNode(''));
+if (codeFontStyle.sheet) {
+  document.head.appendChild(codeFontStyle);
+  for (const selector of [
     // GitHub
     '.blob-code-inner, .blob-num',
     // GitLab
@@ -26,6 +27,7 @@
     // BitBucket
     '.view-lines',
     '.line-numbers > a',
-  ].forEach(selector =>
-    element.sheet?.insertRule(`${selector} { font-family: monospace !important; }`, 0),
-  ))(document.createElement('style'), document, document.head);
+  ]) {
+    codeFontStyle.sheet.insertRule(`${selector} { font-family: monospace !important; }`, 0);
+  }
+}
