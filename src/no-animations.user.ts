@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         No animations
-// @version      0.0.4
+// @version      0.0.5
 // @description  Disable animations.
 // @match        *://*/*
 // @grant        none
@@ -15,9 +15,11 @@
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
 const noAnimationsStyle = document.createElement('style');
+noAnimationsStyle.dataset.fromTampermonkey = 'true';
+noAnimationsStyle.dataset.script = 'No animations';
 noAnimationsStyle.appendChild(document.createTextNode(''));
+document.head.appendChild(noAnimationsStyle);
 if (noAnimationsStyle.sheet) {
-  document.head.appendChild(noAnimationsStyle);
   noAnimationsStyle.sheet.insertRule(
     `*, :before, :after {
           /*CSS transitions*/

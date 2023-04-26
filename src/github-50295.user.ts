@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GitHub 50295
-// @version      0.0.1
+// @version      0.0.2
 // @description  Fix selection when EWPF flag is enabled. See https://github.com/orgs/community/discussions/50295
 // @match        https://github.com/*
 // @match        https://gist.github.com/*
@@ -15,9 +15,11 @@
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
 const styleElement = document.createElement('style');
+styleElement.dataset.fromTampermonkey = 'true';
+styleElement.dataset.script = 'GitHub 50295';
 styleElement.appendChild(document.createTextNode(''));
+document.head.appendChild(styleElement);
 if (styleElement.sheet) {
-  document.head.appendChild(styleElement);
   styleElement.sheet.insertRule(
     '::selection { background-color: rgba(56,139,253,0.4) !important; }',
   );

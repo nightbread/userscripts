@@ -3,8 +3,8 @@
 // @grant        none
 // @match        https://coveralls.io/*
 // @name         Coveralls no-all-caps
-// @namespace    http://tat.sh/
-// @version      0.1.4
+// @namespace    http://z.sh/
+// @version      0.1.5
 // @author       nightbread
 // @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/coveralls-no-caps.user.js
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/coveralls-no-caps.user.js
@@ -15,9 +15,11 @@
 // From https://davidwalsh.name/add-rules-stylesheets
 
 const noCapsStyle = document.createElement('style');
+noCapsStyle.dataset.fromTampermonkey = 'true';
+noCapsStyle.dataset.script = 'Coveralls no-all-caps';
 noCapsStyle.appendChild(document.createTextNode(''));
+document.head.appendChild(noCapsStyle);
 if (noCapsStyle.sheet) {
-  document.head.appendChild(noCapsStyle);
   noCapsStyle.sheet.insertRule('* { text-transform: none !important; }', 0);
 }
 const uppercaseFirst = (x: string) => `${x[0]}${x.toLowerCase().substring(1)}`;
