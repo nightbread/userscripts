@@ -1,7 +1,7 @@
 'use strict';
 // ==UserScript==
 // @name         Monospace for code
-// @version      0.0.6
+// @version      0.0.7
 // @description  Use plain monospace for code on GitHub and other sites.
 // @match        https://github.com/*
 // @match        https://gist.github.com/*
@@ -16,7 +16,9 @@
 // @namespace    https://www.theguardian.com/
 // ==/UserScript==
 const codeFontStyle = document.createElement('style');
-codeFontStyle.appendChild(document.createTextNode(''));
+codeFontStyle.dataset.fromTampermonkey = 'true';
+codeFontStyle.dataset.script = 'Monospace for code';
+document.head.appendChild(codeFontStyle);
 if (codeFontStyle.sheet) {
   document.head.appendChild(codeFontStyle);
   for (const selector of [
