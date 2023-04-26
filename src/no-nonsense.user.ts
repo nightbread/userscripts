@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         No Nonsense
 // @namespace    http://wwww.theguardian.com/
-// @version      0.0.2
+// @version      0.0.3
 // @description  Remove nonsense.
 // @noframes
 // @author       nightbread
@@ -13,6 +13,6 @@
 // @updateURL    https://raw.githubusercontent.com/nightbread/userscripts/master/dist/no-nonsense.user.js
 // @downloadURL  https://raw.githubusercontent.com/nightbread/userscripts/master/dist/no-nonsense.user.js
 // ==/UserScript==
-for (const selector of ['#banner-blm', '#blm-banner']) {
+for (const selector of new Set(['#banner-blm', '#blm-banner'])) {
   document.querySelectorAll(selector).forEach(x => x.remove());
 }
