@@ -47,7 +47,7 @@ const toM = (input: string) =>
         `${wrapper === '*' ? '**' : '*'}${content as string}${wrapper === '*' ? '**' : '*'}`,
     )
     .replace(/\{\{([^}]+)\}\}/g, '`$1`')
-    .replace(/\?\?((?:.[^?]|[^?].)+)\?\?/g, '<cite>$1</cite>')
+    .replace(/\?\?([^?]+)\?\?/g, '<cite>$1</cite>')
     .replace(/\+([^+]*)\+/g, '<ins>$1</ins>')
     .replace(/\^([^^]*)\^/g, '<sup>$1</sup>')
     .replace(/~([^~]*)~/g, '<sub>$1</sub>')
@@ -90,7 +90,7 @@ const toJ = (input: string) =>
     )
     .replace(/~~(.*?)~~/g, '-$1-')
     .replace(
-      /`{3,}(\w+)?((?:\n|[^`])+)`{3,}/g,
+       /`{3,}(\w+)?((?:[^`\n]+|\n)*?)`{3,}/g,
       (_, syntax: string, content: string) =>
         `{code${syntax ? ':' + syntax : ''}}${content}{code}`,
     )
