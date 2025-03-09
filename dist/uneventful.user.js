@@ -16,7 +16,14 @@
 // ==/UserScript==
 // Inspired by <http://stackoverflow.com/a/10326899>.
 /** Movement events. */
-const movementEvents = new Set(['keydown', 'keypress', 'keyup', 'wheel', 'mousewheel', 'scroll']);
+const movementEvents = new Set([
+  'keydown',
+  'keypress',
+  'keyup',
+  'wheel',
+  'mousewheel', // Deprecated but apparently still accepted by Chrome
+  'scroll',
+]);
 /**
  * Search domain, super-domains, default.
  * Order: deny, allow.

@@ -70,9 +70,7 @@ const toJ = input =>
     .replace(
       /^(\s*)- (.*)$/gm,
       (_, level, content) =>
-        `${Array(level.length > 0 ? parseInt(String(level.length / 4)) + 2 : 2).join(
-          '-',
-        )} ${content}`,
+        `${Array(level.length > 0 ? parseInt(String(level.length / 4)) + 2 : 2).join('-')} ${content}`,
     )
     .replace(
       new RegExp('<(' + Object.keys(MAP).join('|') + ')>(.*?)</\\1>', 'g'),
@@ -80,7 +78,7 @@ const toJ = input =>
     )
     .replace(/~~(.*?)~~/g, '-$1-')
     .replace(
-      /`{3,}(\w+)?((?:[^`\n]+|\n)*?)`{3,}/g,
+      /`{3,}(\w+)?([^`]+)`{3,}/g,
       (_, syntax, content) => `{code${syntax ? ':' + syntax : ''}}${content}{code}`,
     )
     .replace(/`([^`]+)`/g, '{{$1}}')

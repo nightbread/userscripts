@@ -49,7 +49,7 @@ const aelBlacklist = ['.icloud.com'];
 /** Generate super-domains of a domain. */
 const superDomains = function* (
   domain: keyof typeof domainPermissions,
-): Generator<keyof typeof domainPermissions | string | 'DEFAULT'> {
+): Generator<keyof typeof domainPermissions | string> {
   yield domain as string;
   yield '.' + (domain as string);
   for (

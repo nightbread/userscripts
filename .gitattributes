@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.lock binary
+/.yarn/plugins/@yarnpkg/*.cjs binary
+/.yarn/releases/*.cjs binary

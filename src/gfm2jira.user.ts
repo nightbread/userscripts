@@ -90,9 +90,8 @@ const toJ = (input: string) =>
     )
     .replace(/~~(.*?)~~/g, '-$1-')
     .replace(
-       /`{3,}(\w+)?((?:[^`\n]+|\n)*?)`{3,}/g,
-      (_, syntax: string, content: string) =>
-        `{code${syntax ? ':' + syntax : ''}}${content}{code}`,
+      /`{3,}(\w+)?([^`]+)`{3,}/g,
+      (_, syntax: string, content: string) => `{code${syntax ? ':' + syntax : ''}}${content}{code}`,
     )
     .replace(/`([^`]+)`/g, '{{$1}}')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '[$1|$2]')
